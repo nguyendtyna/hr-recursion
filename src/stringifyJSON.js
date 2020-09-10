@@ -14,4 +14,25 @@ var stringifyJSON = function(obj) {
   if (typeof obj === 'string') {
     return `"${obj}"`;
   }
+
+  // check if input is an array
+  if (Array.isArray(obj)) {
+    // if array is empty, return an empty array
+    if (obj.length === 0) {
+      return '[]';
+    } else {
+      // create a result array to contain stringed elements
+      let stringified = [];
+      // iterate through the array
+      for (let i = 0; i < obj.length; i++) {
+        // create an alias for the current element
+        let item = obj[i];
+        // recursively stringify each element and add to result array
+        stringified.push(stringifyJSON(item));
+      }
+
+      // return result array of strings
+      return `[${stringified}]`;
+    }
+  }
 };
