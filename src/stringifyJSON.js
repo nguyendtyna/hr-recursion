@@ -4,5 +4,24 @@
 // but you don't so you're going to write it from scratch:
 
 var stringifyJSON = function(obj) {
-  // your code goes here
+
+  // check if input is a number type
+  if (typeof obj === 'number') {
+    return `${obj}`;
+  }
+
+  // check if input is null
+  if (obj === null) {
+    return `${obj}`;
+  }
+
+  // check if input is a boolean
+  if (typeof obj === 'boolean') {
+    return `${obj}`;
+  }
+
+  // check if input is a string
+  if (typeof obj === 'string') {
+    return `"${obj}"`;
+  }
 };
