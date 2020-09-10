@@ -5,18 +5,8 @@
 
 var stringifyJSON = function(obj) {
 
-  // check if input is a number type
-  if (typeof obj === 'number') {
-    return `${obj}`;
-  }
-
-  // check if input is null
-  if (obj === null) {
-    return `${obj}`;
-  }
-
-  // check if input is a boolean
-  if (typeof obj === 'boolean') {
+  // check if input is a number, boolean or null
+  if (typeof obj === 'number' || typeof obj === 'boolean' || obj === null) {
     return `${obj}`;
   }
 
