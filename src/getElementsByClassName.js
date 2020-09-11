@@ -12,22 +12,19 @@ var getElementsByClassName = function(className) {
 
   // define inner function to check the class name
   var checkClassName = function(bodyElement) {
-    // check if the body element has a class
-    if (bodyElement.classList) {
-      // check if the class is equal to className, <class=className>
-      if (bodyElement.classList.contains(className)) {
-        // add the body element to results
-        elements.push(bodyElement);
-      }
+    // check if the body element has a class and if the class equals className
+    if (bodyElement.classList && bodyElement.classList.contains(className)) {
+      // add the body element to results
+      elements.push(bodyElement);
     }
 
     // check if the body element has a child node
     if (bodyElement.childNodes) {
-      // create alias for current child node
+      // create alias for child nodes
       let children = bodyElement.childNodes;
       // iterate through each child node to check the class name
       children.forEach(function(element) {
-        // call checkClassName recursively on current child node
+        // call checkClassName recursively on each child node
         checkClassName(element);
       });
     }
