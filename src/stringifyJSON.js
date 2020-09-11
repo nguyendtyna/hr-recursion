@@ -35,4 +35,29 @@ var stringifyJSON = function(obj) {
       return `[${stringified}]`;
     }
   }
+
+  // check if input is an object
+  if (typeof obj === 'object') {
+    // if object keys do not exist, return empty object
+    if (Object.keys(obj).length === 0) {
+      return '{}';
+    }
+
+    // create a result array to contain stringed elements
+    let stringified = [];
+    // iterate through the object keys
+    for (let key in obj) {
+      // create an alias for the current element
+      let item = obj[key];
+      // check for unstringifiable values
+      if (typeof item === 'function' || item === undefined) {
+        return '{}';
+      } else {
+        // recursively stringify each element and add key-value to result array
+        stringified.push(`${stringifyJSON(key)}:${stringifyJSON(item)}`);
+      }
+    }
+    // return result object of key-values as strings
+    return `{${stringified}}`;
+  }
 };
