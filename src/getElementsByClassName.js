@@ -23,13 +23,13 @@ var getElementsByClassName = function(className) {
 
     // check if the body element has a child node
     if (bodyElement.childNodes) {
+      // create alias for current child node
+      let children = bodyElement.childNodes;
       // iterate through each child node to check the class name
-      for (let i = 0; i < bodyElement.childNodes.length; i++) {
-        // create alias for current child node
-        let childNode = bodyElement.childNodes[i];
+      children.forEach(function(element) {
         // call checkClassName recursively on current child node
-        checkClassName(childNode);
-      }
+        checkClassName(element);
+      });
     }
   };
 
