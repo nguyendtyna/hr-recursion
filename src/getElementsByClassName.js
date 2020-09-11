@@ -8,20 +8,35 @@ var getElementsByClassName = function(className) {
   // console.log(document);
 
   // define a result array to contain child elements of given class name
+  let elements = [];
 
   // define inner function to check the class name
-  var checkClassName = function() {
+  var checkClassName = function(bodyElement) {
     // check if the body element has a class
-    // check if the class is equal to className
-      // add the body element to results
+    if (bodyElement.classList) {
+      // check if the class is equal to className, <class=className>
+      if (bodyElement.classList.contains(className)) {
+        // add the body element to results
+        elements.push(bodyElement);
+      }
+    }
 
     // check if the body element has a child node
+    if (bodyElement.childNodes) {
       // iterate through each child node to check the class name
+      for (let i = 0; i < bodyElement.childNodes.length; i++) {
+        // create alias for current child node
+        let childNode = bodyElement.childNodes[i];
         // call checkClassName recursively on current child node
+        checkClassName(childNode);
+      }
+    }
   };
 
   // invoke inner function
+  checkClassName(document.body);
   // return result array
+  return elements;
 };
 
 /*
@@ -29,4 +44,6 @@ var getElementsByClassName = function(className) {
 - the HTML body element represents the content of an HTML document
 - document.body property represents the body node of the current document
 - document.body returns the body element
+- <element>.classList returns a collection of class attributes of the element
+- <element>.childNodes returns a collection of child nodes of the given element
 */
