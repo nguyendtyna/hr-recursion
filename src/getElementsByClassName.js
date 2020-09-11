@@ -47,3 +47,5 @@ var getElementsByClassName = function(className) {
 - <element>.classList returns a collection of class attributes of the element
 - <element>.childNodes returns a collection of child nodes of the given element
 */
+
+// Assignment Complete
