@@ -18,14 +18,14 @@ var getElementsByClassName = function(className) {
       elements.push(bodyElement);
     }
 
-    // check if the body element has a child node
-    if (bodyElement.childNodes) {
-      // create alias for child nodes
-      let children = bodyElement.childNodes;
+    // create alias for child nodes
+    let children = bodyElement.childNodes;
+    // check if the body element has child nodes
+    if (children) {
       // iterate through each child node to check the class name
-      children.forEach(function(element) {
+      children.forEach(function(childNode) {
         // call checkClassName recursively on each child node
-        checkClassName(element);
+        checkClassName(childNode);
       });
     }
   };
